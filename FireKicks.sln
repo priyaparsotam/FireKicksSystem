@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.645
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FireKicksBackOffice", "FireKicksBackOffice\FireKicksBackOffice.csproj", "{A0B5DA70-DC3A-4480-A329-A1FAEB6A7ACA}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "FireKicksFrontOffice", "FireKicksFrontOffice\", "{57BD7784-9CB9-4723-B233-594B8A9C18DD}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_1122"
+		Debug.AspNetCompiler.PhysicalPath = "FireKicksFrontOffice\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_1122\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_1122"
+		Release.AspNetCompiler.PhysicalPath = "FireKicksFrontOffice\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_1122\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "1122"
+		SlnRelativePath = "FireKicksFrontOffice\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FireKicksClasses", "FireKicksClasses\FireKicksClasses.csproj", "{97F59710-9D41-46F5-BE07-C474D630D672}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FireKicksTesting", "FireKicksTesting\FireKicksTesting.csproj", "{3A563F98-D94B-46CA-8CA7-4B1BBD9D3720}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A0B5DA70-DC3A-4480-A329-A1FAEB6A7ACA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0B5DA70-DC3A-4480-A329-A1FAEB6A7ACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0B5DA70-DC3A-4480-A329-A1FAEB6A7ACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0B5DA70-DC3A-4480-A329-A1FAEB6A7ACA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57BD7784-9CB9-4723-B233-594B8A9C18DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57BD7784-9CB9-4723-B233-594B8A9C18DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57BD7784-9CB9-4723-B233-594B8A9C18DD}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{57BD7784-9CB9-4723-B233-594B8A9C18DD}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{97F59710-9D41-46F5-BE07-C474D630D672}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97F59710-9D41-46F5-BE07-C474D630D672}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97F59710-9D41-46F5-BE07-C474D630D672}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97F59710-9D41-46F5-BE07-C474D630D672}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A563F98-D94B-46CA-8CA7-4B1BBD9D3720}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A563F98-D94B-46CA-8CA7-4B1BBD9D3720}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A563F98-D94B-46CA-8CA7-4B1BBD9D3720}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A563F98-D94B-46CA-8CA7-4B1BBD9D3720}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1EA7A060-723C-4282-AC8B-160188F03546}
+	EndGlobalSection
+EndGlobal
