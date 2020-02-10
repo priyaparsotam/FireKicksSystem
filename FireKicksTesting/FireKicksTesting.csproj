@@ -50,8 +50,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< HEAD
     <Compile Include="tstOrderProcessing.cs" />
     <Compile Include="UnitTest1.cs" />
+=======
+    <Compile Include="tslCustomer.cs" />
+>>>>>>> ShinyiBranch
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
