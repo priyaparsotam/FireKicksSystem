@@ -50,10 +50,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< HEAD
     <Compile Include="tslCustomer.cs" />
+=======
+
+    <Compile Include="tstOrderProcessing.cs" />
+    <Compile Include="UnitTest1.cs" />
+
+=======
+    <Compile Include="tslCustomer.cs" />
+
+    >>>>>>> ShinyiBranch
+>>>>>>> 5b7037268ed91db511e06fd9654baeab3fe40fef
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FireKicksClasses\FireKicksClasses.csproj">
+      <Project>{97F59710-9D41-46F5-BE07-C474D630D672}</Project>
+      <Name>FireKicksClasses</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
