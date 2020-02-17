@@ -56,7 +56,7 @@
 
 =======
     <Compile Include="tslCustomer.cs" />
-    >>>>>>>  HEAD
+
     >>>>>>> ShinyiBranch
   </ItemGroup>
   <ItemGroup>
