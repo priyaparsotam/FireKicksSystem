@@ -35,6 +35,18 @@ namespace FireKicksTesting
             Assert.AreEqual(AnOrderProcessing.CustomerID, TestData);
         }
 
+        [TestMethod]
+        public void OrderDatePropertyOK()
+        {
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            DateTime TestData = DateTime.Now.Date;
+            AnOrderProcessing.OrderDate = TestData;
+            Assert.AreEqual(AnOrderProcessing.OrderDate, TestData);
+        }
+
+    }
+            
+
 
         [TestMethod]
         public void DispatchedPropertyOk()
