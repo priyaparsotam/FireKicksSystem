@@ -27,7 +27,13 @@ namespace FireKicksTesting
         }
 
         [TestMethod]
-
+        public void CustomerIDPropertyOK()
+        {
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            int TestData = 1;
+            AnOrderProcessing.CustomerID = TestData;
+            Assert.AreEqual(AnOrderProcessing.CustomerID, TestData);
+        }
 
 
         [TestMethod]
