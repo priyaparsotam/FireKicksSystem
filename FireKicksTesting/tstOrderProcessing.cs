@@ -118,7 +118,7 @@ namespace FireKicksTesting
             Boolean OK = true;
             Int32 OrderID = 3;
             Found = AnOrderProcessing.Find(OrderID);
-            if (AnOrderProcessing.OrderDate != Convert.ToDateTime("03/03/2020"))
+            if (AnOrderProcessing.OrderDate != Convert.ToDateTime("04/03/2020"))
             {
                 OK = false;
             }

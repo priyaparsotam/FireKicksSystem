@@ -81,15 +81,28 @@ namespace FireKicksClasses
             }
         }
 
-        public bool Find(int orderID)
+        public bool Find(int OrderID)
         {
-            mOrderID = 3;
-            mCustomerID = 3;
-            mOrderDate = Convert.ToDateTime("03/03/2020");
-            mTrainerDescription = "Adidas";
-            mTotalAmount = 70.00;
-            mDispatched = true;
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderID", OrderID);
+            DB.Execute("sproc_tblOrderProcessing_FilterByOrderID");
+            if(DB.Count ==1)
+            {
+                mOrderID = Convert.ToInt32(DB.DataTable.Rows[0]["OrderID"]);
+                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
+                mOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["OrderDate"]);
+                mTrainerDescription = Convert.ToString(DB.DataTable.Rows[0]["TrainerDescription"]);
+                mTotalAmount = Convert.ToInt32(DB.DataTable.Rows[0]["TotalAmount"]);
+                mDispatched = Convert.ToBoolean(DB.DataTable.Rows[0]["Dispatched"]);
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+           
         }
     }
     

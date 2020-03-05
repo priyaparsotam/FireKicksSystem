@@ -43,4 +43,23 @@ public partial class AnOrderProcessing : System.Web.UI.Page
         Response.Redirect("OrderProcessingViewer.aspx");
     
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+        Int32 OrderID;
+        Boolean Found = false;
+        OrderID = Convert.ToInt32(txtOrderID.Text);
+        Found = AnOrderProcessing.Find(OrderID);
+
+        if (Found == true)
+        {
+            txtCustomerID.Text = AnOrderProcessing.CustomerID;
+            txtOrderDate.Text = AnOrderProcessing.OrderDate;
+            txtTrainerDescription.Text = AnOrderProcessing.TrainerDescription;
+            txtTotalAmount.Text = AnOrderProcessing.TotalAmount;
+           
+
+}
+    }
 }
