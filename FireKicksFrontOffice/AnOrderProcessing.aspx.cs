@@ -54,10 +54,10 @@ public partial class AnOrderProcessing : System.Web.UI.Page
 
         if (Found == true)
         {
-            txtCustomerID.Text = AnOrderProcessing.CustomerID;
-            txtOrderDate.Text = AnOrderProcessing.OrderDate;
-            txtTrainerDescription.Text = AnOrderProcessing.TrainerDescription;
-            txtTotalAmount.Text = AnOrderProcessing.TotalAmount;
+            txtCustomerID.Text = Convert.ToString(AnOrderProcessing.CustomerID);
+            txtOrderDate.Text = AnOrderProcessing.OrderDate.ToString();
+            txtTrainerDescription.Text = Convert.ToString(AnOrderProcessing.TrainerDescription);
+            txtTotalAmount.Text = Convert.ToString(AnOrderProcessing.TotalAmount);
            
 
 }
