@@ -1,31 +1,10 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ACustomer.aspx.cs" Inherits="ACustomer" %>
 
 <!DOCTYPE html>
-<script runat="server">
-
-    protected void btnFind_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void Button1_Click(object sender, EventArgs e)
-    {
-
-    }
-</script>
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <style type="text/css">
-        #Text1 {
-            z-index: 1;
-            left: 202px;
-            top: 187px;
-            position: absolute;
-        }
-    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -53,11 +32,11 @@
         <p>
         <asp:Button ID="btnCancel" runat="server" style="z-index: 1; top: 498px; position: absolute; right: 1123px; height: 26px;" Text="Cancel" OnClick="CancelButton_Click" />
         </p>
-        <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 367px; top: 184px; position: absolute; height: 34px" Text="Button" />
         <asp:Label ID="Label5" runat="server" style="z-index: 1; left: 69px; top: 373px; position: absolute" Text="Customer D.O.B"></asp:Label>
         <asp:TextBox ID="txtCustomerDob" runat="server" style="z-index: 1; top: 367px; position: absolute; left: 197px"></asp:TextBox>
         <asp:CheckBox ID="ReceiveMail" runat="server" style="z-index: 1; left: 438px; top: 445px; position: absolute" />
         <asp:Label ID="Label6" runat="server" style="z-index: 1; left: 68px; top: 424px; position: absolute" Text="Customer Address"></asp:Label>
+        <asp:Button ID="Button1" runat="server" style="z-index: 1; left: 214px; top: 502px; position: absolute" Text="cancel" />
     </form>
 </body>
 </html>
