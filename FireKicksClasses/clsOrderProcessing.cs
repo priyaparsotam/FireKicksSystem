@@ -103,6 +103,16 @@ namespace FireKicksClasses
 
            
         }
+
+        public string Valid(string customerID, string orderDate, string trainerDescription, string totalAmount)
+        {
+            String Error = "";
+            if (OrderID.Length == 0)
+            {
+                Error = Error + "This Order may not be blanked";
+            }
+            return Error;
+        }
     }
     
     

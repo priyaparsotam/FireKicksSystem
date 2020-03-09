@@ -5,10 +5,19 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace FireKicksTesting
 {
     [TestClass]
-    public class tstOrderProcessing
-    {
+    public class tstOrderProcessing { 
+    
+       
+        string CustomerID = "1";
+        string OrderDate = DateTime.Now.Date.ToString();
+        string TrainerDescription = "Nike";
+        string TotalAmount = "50";
 
+    
 
+  
+   
+  
 
         [TestMethod]
         public void InstanceOk()
@@ -18,7 +27,7 @@ namespace FireKicksTesting
         }
 
         [TestMethod]
-        public void OrderID()
+        public void OrderIDOk()
         {
             clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
             int TestData = 1;
@@ -27,7 +36,7 @@ namespace FireKicksTesting
         }
 
         [TestMethod]
-        public void CustomerID()
+        public void CustomerIDOk()
         {
             clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
             int TestData = 1;
@@ -36,7 +45,7 @@ namespace FireKicksTesting
         }
 
         [TestMethod]
-        public void OrderDate()
+        public void OrderDateOk()
         {
             clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
             DateTime TestData = DateTime.Now.Date;
@@ -44,7 +53,7 @@ namespace FireKicksTesting
             Assert.AreEqual(AnOrderProcessing.OrderDate, TestData);
         }
         [TestMethod]
-        public void TrainerDescription()
+        public void TrainerDescriptionOk()
         {
             clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
             string TestData = "Nike";
@@ -53,7 +62,7 @@ namespace FireKicksTesting
         }
 
         [TestMethod]
-        public void TotalAmount()
+        public void TotalAmountOk()
         {
             clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
             double TestData = 10.99;
@@ -62,7 +71,7 @@ namespace FireKicksTesting
         }
 
         [TestMethod]
-        public void Dispatched()
+        public void DispatchedOk()
         {
             clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
             Boolean TestData = true;
@@ -171,8 +180,29 @@ namespace FireKicksTesting
             Assert.IsTrue(OK);
         }
 
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            String Error = "";
+            Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
+            Assert.AreEqual(Error, "");
 
-    }        
+
+        }
+
+        [TestMethod]
+        public void OrderIDMinLessOne()
+        {
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            String Error = "";
+            string OrderID = "";
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        }
     }
+
 
 
