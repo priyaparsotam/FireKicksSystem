@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FireKicksClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -124,6 +125,11 @@ namespace TrainerClasses
             {
                 return false;
             }
+        }
+
+        public string Valid(string CustomerName, string CustomerEmail , string CustomerPassword , string CustomerAddress, DateTime CustomerDOB)
+        {
+            return "";
         }
 
         

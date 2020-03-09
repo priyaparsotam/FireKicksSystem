@@ -7,6 +7,8 @@ namespace TrainerTesting
     [TestClass]
     public class tstCustomer
     {
+
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -191,6 +193,15 @@ namespace TrainerTesting
             }
             Assert.IsTrue(OK);
         }
+
+        //[TestMethod]
+        //public void ValidMethodOK()
+        //{
+        //    clsCustomer ACustomer = new clsCustomer();
+        //    String Error = "";
+        //    Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerPassword, CustomerAddress, CustomerDOB);
+        //    Assert.AreEqual(Error, "");
+        //}
     }
 }
 
