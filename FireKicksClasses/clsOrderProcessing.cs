@@ -94,7 +94,6 @@ namespace FireKicksClasses
                 mTrainerDescription = Convert.ToString(DB.DataTable.Rows[0]["TrainerDescription"]);
                 mTotalAmount = Convert.ToInt32(DB.DataTable.Rows[0]["TotalAmount"]);
                 mDispatched = Convert.ToBoolean(DB.DataTable.Rows[0]["Dispatched"]);
-
                 return true;
             }
             else
