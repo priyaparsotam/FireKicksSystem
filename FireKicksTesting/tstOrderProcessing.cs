@@ -269,6 +269,226 @@ namespace FireKicksTesting
             Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
             Assert.AreNotEqual(Error, "");
         }
+
+        [TestMethod]
+        public void OrderDateExtremeMin()
+        {
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-100);
+            string OrderDate = TestDate.ToString();
+            Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderDateMinLessOne()
+        {
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-1);
+            string OrderDate = TestDate.ToString();
+            Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderDateMin()
+        {
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string OrderDate = TestDate.ToString();
+            Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderDateMinPlusOne()
+        {
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(1);
+            string OrderDate = TestDate.ToString();
+            Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderDateExtremeMax()
+        {
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(100);
+            string OrderDate = TestDate.ToString();
+            Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderDateInvalidData()
+        {
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            String Error = "";
+            string OrderDate = "This is not a date!";
+            Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void TrainerDescriptionMinLessOne()
+        {
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            String Error = "";
+            string TrainerDescription = "";
+            Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void TrainerDescriptionMin()
+        {
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            String Error = "";
+            string TrainerDescription = "a";
+            Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void TrainerDescriptionMinPlusOne()
+        {
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            String Error = "";
+            string TrainerDescription = "aa";
+            Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void TrainerDescriptionMaxLessOne()
+        {
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            String Error = "";
+            string TrainerDescription = "";
+            TrainerDescription = TrainerDescription.PadRight(49, 'a');
+            Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void TrainerDescriptionMax()
+        {
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            String Error = "";
+            string TrainerDescription = "";
+            TrainerDescription = TrainerDescription.PadRight(50, 'a');
+            Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void TrainerDescriptionMaxPlusOne()
+        {
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            String Error = "";
+            string TrainerDescription = "";
+            Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void TrainerDescriptionMid()
+        {
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            String Error = "";
+            string TrainerDescription = "";
+            TrainerDescription = TrainerDescription.PadRight(25, 'a');
+            Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void TotalAmountMinLessOne()
+        {
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            String Error = "";
+            string TotalAmount = "";
+            Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void TotalAmountMin()
+        {
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            String Error = "";
+            string TotalAmount = "1";
+            Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void TotalAmountMinPlusOne()
+        {
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            String Error = "";
+            string TotalAmount = "11";
+            Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void TotalAmountMaxLessOne()
+        {
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            String Error = "";
+            string TotalAmount = "11111111";
+            Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void TotalAmountMax()
+        {
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            String Error = "";
+            string TotalAmount = "111111111";
+            Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void TotalAmountMaxPlusOne()
+        {
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            String Error = "";
+            string TotalAmount = "1111111111";
+            Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void TotalAmountMid()
+        {
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            String Error = "";
+            string TotalAmount = "1111";
+            Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
+            Assert.AreEqual(Error, "");
+        }
     }
     }
 

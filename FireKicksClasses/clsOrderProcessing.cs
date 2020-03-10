@@ -108,6 +108,7 @@ namespace FireKicksClasses
 
         {
             String Error = "";
+            DateTime DateTemp;
             if (customerID.Length == 0)
             {
                 Error = Error + "The CustomerID may not be blank: ";
@@ -117,7 +118,49 @@ namespace FireKicksClasses
             {
                 Error = Error + "The CustomerID must be less than 6 digits: ";
             }
-                return Error;
+            try
+            {
+                DateTemp = Convert.ToDateTime(orderDate);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past: ";
+                }
+
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future: ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date was not a valid date: ";
+            }
+
+            if (trainerDescription.Length == 0)
+            {
+                
+                Error = Error + "The trainer description must not be blank : ";
+            }
+          
+            if (trainerDescription.Length > 50)
+            {
+               
+                Error = Error + "The trainer description must be less than 50 characters : ";
+            }
+
+            if (totalAmount.Length == 0.00)
+            {
+
+                Error = Error + "The total amount must not be left blank : ";
+            }
+
+            if (totalAmount.Length > 9)
+            {
+
+                Error = Error + "The total amount must be less than 9 digits : ";
+            }
+
+            return Error;
         }
 
     }   

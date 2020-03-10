@@ -24,6 +24,7 @@
         <br />
 &nbsp;<asp:CheckBox ID="chkbxDispatched" runat="server" Text="Dispatched" />
         <br />
+        <asp:Label ID="lblError" runat="server" Text="Label"></asp:Label>
         <br />
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

@@ -33,15 +33,30 @@ public partial class AnOrderProcessing : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
-        AnOrderProcessing.OrderID = Convert.ToInt32(txtOrderID.Text);
-        AnOrderProcessing.CustomerID = Convert.ToInt32(txtCustomerID.Text);
-        AnOrderProcessing.OrderDate = Convert.ToDateTime(txtOrderDate.Text);
-        AnOrderProcessing.TrainerDescription = txtTrainerDescription.Text;
-        AnOrderProcessing.TotalAmount = Convert.ToDouble(txtTotalAmount.Text);
 
-        Session["AnOrderProcessing"] = AnOrderProcessing;
-        Response.Redirect("OrderProcessingViewer.aspx");
-    
+        string CustomerID = txtCustomerID.Text;
+        string OrderDate = txtOrderDate.Text;
+        string TrainerDescription = txtTrainerDescription.Text;
+        string TotalAmount = txtTotalAmount.Text;
+
+        string Error = "";
+        Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
+        if (Error == "")
+        {
+            AnOrderProcessing.OrderID = Convert.ToInt32(txtOrderID.Text);
+            AnOrderProcessing.CustomerID = Convert.ToInt32(txtCustomerID.Text);
+            AnOrderProcessing.OrderDate = Convert.ToDateTime(txtOrderDate.Text);
+            AnOrderProcessing.TrainerDescription = txtTrainerDescription.Text;
+            AnOrderProcessing.TotalAmount = Convert.ToDouble(txtTotalAmount.Text);
+
+            Session["AnOrderProcessing"] = AnOrderProcessing;
+            Response.Redirect("OrderProcessingViewer.aspx");
+
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
