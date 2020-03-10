@@ -66,7 +66,5 @@ namespace FireKicksClasses
             mQuantity = 4;
             return true;
         }
-    }
-
-    
+}
 }
