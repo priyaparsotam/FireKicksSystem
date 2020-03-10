@@ -86,7 +86,7 @@ namespace FireKicksClasses
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@OrderID", OrderID);
             DB.Execute("sproc_tblOrderProcessing_FilterByOrderID");
-            if(DB.Count ==1)
+            if (DB.Count == 1)
             {
                 mOrderID = Convert.ToInt32(DB.DataTable.Rows[0]["OrderID"]);
                 mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
@@ -101,19 +101,24 @@ namespace FireKicksClasses
                 return false;
             }
 
-           
+
         }
 
         public string Valid(string customerID, string orderDate, string trainerDescription, string totalAmount)
+
         {
             String Error = "";
-            if (OrderID.Length == 0)
+            if (customerID.Length == 0)
             {
-                Error = Error + "This Order may not be blanked";
+                Error = Error + "The CustomerID may not be blank: ";
             }
-            return Error;
+
+            if (customerID.Length > 6)
+            {
+                Error = Error + "The CustomerID must be less than 6 digits: ";
+            }
+                return Error;
         }
-    }
-    
-    
+
+    }   
 }

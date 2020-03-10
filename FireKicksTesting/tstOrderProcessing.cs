@@ -187,21 +187,89 @@ namespace FireKicksTesting
             String Error = "";
             Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
             Assert.AreEqual(Error, "");
-
-
         }
 
         [TestMethod]
-        public void OrderIDMinLessOne()
+        public void CustomerIDMinLessOne()
         {
             clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
             String Error = "";
-            string OrderID = "";
+            string CustomerID = "";
+            Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
             Assert.AreNotEqual(Error, "");
         }
 
-
+        [TestMethod]
+        public void CustomerIDMin()
+        {
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            String Error = "";
+            string CustomerID = "1";
+            Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
+            Assert.AreEqual(Error, "");
         }
+
+        [TestMethod]
+        public void CustomerIDMinPlusOne()
+        {
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            String Error = "";
+            string CustomerID = "11";
+            Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerIDMaxLessOne()
+        {
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            String Error = "";
+            string CustomerID = "11111";
+            Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerIDMax()
+        {
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            String Error = "";
+            string CustomerID = "111111";
+            Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerIDMid()
+        {
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            String Error = "";
+            string CustomerID = "111";
+            Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerIDMaxPlusOne()
+        {
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            String Error = "";
+            string CustomerID = "1111111";
+            Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerIDExtremeMax()
+        {
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            String Error = "";
+            string CustomerID = "";
+            CustomerID = CustomerID.PadRight(500, '1');
+            Error = AnOrderProcessing.Valid(CustomerID, OrderDate, TrainerDescription, TotalAmount);
+            Assert.AreNotEqual(Error, "");
+        }
+    }
     }
 
 
