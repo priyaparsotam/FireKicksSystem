@@ -13,12 +13,6 @@ namespace FireKicksTesting
         string TrainerDescription = "Nike";
         string TotalAmount = "50";
 
-    
-
-  
-   
-  
-
         [TestMethod]
         public void InstanceOk()
         {

@@ -11,6 +11,7 @@
         <div>
             OrderLineID
             <asp:TextBox ID="txtOrderLineID" runat="server"></asp:TextBox>
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
             <br />
             OrderID <asp:TextBox ID="txtOrderID" runat="server"></asp:TextBox>
             <br />
@@ -20,6 +21,8 @@
             Quantity
             <asp:TextBox ID="txtQuantity" runat="server"></asp:TextBox>
             <br />
+            <br />
+            <asp:Label ID="lblError" runat="server"></asp:Label>
             <br />
             <asp:Button ID="btnOk" runat="server" Text="Ok" OnClick="btnOk_Click" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
