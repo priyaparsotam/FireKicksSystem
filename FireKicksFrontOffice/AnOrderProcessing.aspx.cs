@@ -49,8 +49,10 @@ public partial class AnOrderProcessing : System.Web.UI.Page
             AnOrderProcessing.TrainerDescription = txtTrainerDescription.Text;
             AnOrderProcessing.TotalAmount = Convert.ToDouble(txtTotalAmount.Text);
 
-            Session["AnOrderProcessing"] = AnOrderProcessing;
-            Response.Redirect("OrderProcessingViewer.aspx");
+            clsOrderProcessingCollection OrderProcessingList = new clsOrderProcessingCollection();
+            OrderProcessingList.ThisOrderProcessing = AnOrderProcessing;
+            OrderProcessingList.Add();
+            Response.Redirect("OrderProcessingList.aspx");
 
         }
         else

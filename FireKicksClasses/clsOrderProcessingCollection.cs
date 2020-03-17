@@ -6,6 +6,7 @@ namespace FireKicksClasses
     public class clsOrderProcessingCollection
     {
         List<clsOrderProcessing> mOrderProcessingList = new List<clsOrderProcessing>();
+        clsOrderProcessing mThisOrderProcessing = new clsOrderProcessing();
 
         public List<clsOrderProcessing> OrderProcessingList
         {
@@ -31,7 +32,17 @@ namespace FireKicksClasses
                 //blank
             }
         }
-        public clsOrderProcessing ThisOrderProcessing { get; set; }
+        public clsOrderProcessing ThisOrderProcessing
+        {
+            get
+            {
+                return mThisOrderProcessing;
+            }
+            set
+            {
+                mThisOrderProcessing = value;
+            }
+        }
 
         public clsOrderProcessingCollection()
         {
@@ -75,7 +86,36 @@ namespace FireKicksClasses
             TestItem.Dispatched = true;
             mOrderProcessingList.Add(TestItem);*/
         }
-       
 
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@CustomerID", mThisOrderProcessing.CustomerID);
+            DB.AddParameter("@OrderDate", mThisOrderProcessing.OrderDate);
+            DB.AddParameter("@TrainerDescription", mThisOrderProcessing.TrainerDescription);
+            DB.AddParameter("@TotalAmount", mThisOrderProcessing.TotalAmount);
+            DB.AddParameter("@Dispatched", mThisOrderProcessing.Dispatched);
+            return DB.Execute("sproc_tblOrderProcessing_Insert");
+        }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderID", mThisOrderProcessing.OrderID);
+            DB.Execute("sproc_tblOrderProcessing_Delete");
+        }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderID", mThisOrderProcessing.OrderID);
+            DB.AddParameter("@CustomerID", mThisOrderProcessing.CustomerID);
+            DB.AddParameter("@OrderDate", mThisOrderProcessing.OrderDate);
+            DB.AddParameter("@TrainerDescription", mThisOrderProcessing.TrainerDescription);
+            DB.AddParameter("@TotalAmount", mThisOrderProcessing.TotalAmount);
+            DB.AddParameter("@Dispatched", mThisOrderProcessing.Dispatched);
+            DB.Execute("sproc_tblOrderProcessing_Update");
+        }
+        }
     }
 }
