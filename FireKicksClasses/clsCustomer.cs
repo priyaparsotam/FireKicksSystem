@@ -127,11 +127,82 @@ namespace TrainerClasses
             }
         }
 
-        public string Valid(string CustomerName, string CustomerEmail , string CustomerPassword , string CustomerAddress, DateTime CustomerDOB)
+        public string Valid(string CustomerName, 
+                            string CustomerEmail, 
+                            string CustomerPassword, 
+                            string CustomerAddress, 
+                            DateTime CustomerDOB)
         {
             return "";
         }
 
-        
+        public string Valid(string customerName, string customerEmail, string customerPassword, string customerAddress, string customerDOB)
+        {
+            String Error= "";
+            DateTime DateTemp;
+            if (customerName.Length==0)
+            {
+                Error = Error + "The Customer Name may not be blank : ";
+            }
+            if (customerName.Length > 51)
+            {
+                Error = Error + "The Customer must be less than 51 characters : ";
+            }
+
+            try
+            {
+                DateTemp = Convert.ToDateTime(customerDOB);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date was not a valid date";
+            }
+            if (customerEmail.Length == 0)
+            {
+                //record the error
+                Error = Error + "The email may not be blank : ";
+            }
+            //if the street is too long
+            if (customerEmail.Length > 50)
+            {
+                //record the error
+                Error = Error + "The email must be less than 50 characters : ";
+            }
+            if (customerPassword.Length == 0)
+            {
+                //record the error
+                Error = Error + "The password may not be blank : ";
+            }
+            //if the town is too long
+            if (customerPassword.Length > 50)
+            {
+                //record the error
+                Error = Error + "The password must be less than 50 characters : ";
+            }
+            if (customerAddress.Length == 0)
+            {
+                //record the error
+                Error = Error + "The address may not be blank : ";
+            }
+            //if the town is too long
+            if (customerAddress.Length > 50)
+            {
+                //record the error
+                Error = Error + "The address must be less than 50 characters : ";
+            }
+
+
+            return Error;
+
+        }
     }
 }
