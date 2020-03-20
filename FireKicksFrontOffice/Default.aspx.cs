@@ -17,11 +17,11 @@ public partial class _Default : System.Web.UI.Page
 
     void DisplayCustomers()
     {
-        FireKicksClasses.clsCustomerCollection Customers = new FireKicksClasses.clsCustomerCollection();
-        lstCustomerList.DataSource = Customers.CustomerList;
-        lstCustomerList.DataValueField = "CustomerNo";
-        lstCustomerList.DataTextField = "CustomerName";
-        lstCustomerList.DataBind();
+        //FireKicksClasses.clsCustomerCollection Customers = new FireKicksClasses.clsCustomerCollection();
+        //lstCustomerList.DataSource = Customers.CustomerList;
+        //lstCustomerList.DataValueField = "CustomerNo";
+        //lstCustomerList.DataTextField = "CustomerName";
+        //lstCustomerList.DataBind();
          
 
 
