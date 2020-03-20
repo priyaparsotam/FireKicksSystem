@@ -289,23 +289,27 @@ namespace TrainerTesting
         }
 
         [TestMethod]
+        public void CustomerDOBExtremeMin()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-1);
+            string CustomerDOB = TestDate.ToString();
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerPassword, CustomerAddress, CustomerDOB);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
         public void CustomerDOBMinLessOne()
         {
-            //create an instance of the class we want to create
             clsCustomer ACustomer = new clsCustomer();
-            //string variable to store any error message
             String Error = "";
-            //create a variable to store the test date data
             DateTime TestDate;
-            //set the date totodays date
             TestDate = DateTime.Now.Date;
-            //change the date to whatever the date is less 1 day
             TestDate = TestDate.AddDays(-1);
-            //convert the date variable to a string variable
             string CustomerDOB = TestDate.ToString();
-            //invoke the method
             Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerPassword, CustomerAddress, CustomerDOB);
-            //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
 

@@ -152,10 +152,10 @@ namespace TrainerClasses
             try
             {
                 DateTemp = Convert.ToDateTime(customerDOB);
-                if (DateTemp < DateTime.Now.Date)
-                {
-                    Error = Error + "The date cannot be in the past : ";
-                }
+                //if (DateTemp < DateTime.Now.Date)
+                //{
+                //    Error = Error + "The date cannot be in the past : ";
+                //}
                 if (DateTemp > DateTime.Now.Date)
                 {
                     //record the error
