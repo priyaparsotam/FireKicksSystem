@@ -14,26 +14,18 @@ public partial class OrderProcessingList : System.Web.UI.Page
         if (IsPostBack == false)
         {
             if (OrderID != -1)
-                {
+            {
                 DisplayOrders();
             }
         }
     }
     void DisplayOrders()
     {
-        /*clsOrderProcessingCollection OrderBook = new clsOrderProcessingCollection();
-        OrderBook.ThisOrderProcessing.Find(OrderID);
-        txtOrderID.Text = OrderBook.ThisOrderProcessing.OrderID.ToString();
-        txtCustomerID.Text = OrderBook.ThisOrderProcessing.CustomerID;
-        txtOrderDate.Text = OrderBook.ThisOrderProcessing.OrderDate.ToString();
-        txtTrainerDescription.Text = OrderBook.ThisOrderProcessing.TrainerDescription.ToString;
-        txtTotalAmount.Text = OrderBook.ThisOrderProcessing.TotalAmount;
-        txtDispatched.Text = OrderBook.ThisOrderProcessing.Dispatched;*/
-
-        /*lstOrderProcessingList.DataSource = Orders.OrderProcessingList;
+        FireKicksClasses.clsOrderProcessingCollection Orders = new FireKicksClasses.clsOrderProcessingCollection();
+        lstOrderProcessingList.DataSource = Orders.OrderProcessingList;
         lstOrderProcessingList.DataValueField = "OrderID";
         lstOrderProcessingList.DataTextField = "TotalAmount";
-        lstOrderProcessingList.DataBind();*/
+        lstOrderProcessingList.DataBind();
     }
 
     protected void lstOrderProcessingList_SelectedIndexChanged(object sender, EventArgs e)
@@ -75,5 +67,28 @@ public partial class OrderProcessingList : System.Web.UI.Page
         {
             lblError.Text = "Please select a record to delete from the list";
         }
+    }
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        {
+            clsOrderProcessingCollection Orders = new clsOrderProcessingCollection();
+            Orders.ReportByTrainerDescription(txtFilter.Text);
+            lstOrderProcessingList.DataSource = Orders.OrderProcessingList;
+            lstOrderProcessingList.DataValueField = "OrderID";
+            lstOrderProcessingList.DataTextField = "TrainerDescription";
+            lstOrderProcessingList.DataBind();
+        }
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        clsOrderProcessingCollection Orders = new clsOrderProcessingCollection();
+        Orders.ReportByTrainerDescription("");
+        txtFilter.Text = "";
+        lstOrderProcessingList.DataSource = Orders.OrderProcessingList;
+        lstOrderProcessingList.DataValueField = "OrderID";
+        lstOrderProcessingList.DataTextField = "TrainerDescription";
+        lstOrderProcessingList.DataBind();
     }
 }

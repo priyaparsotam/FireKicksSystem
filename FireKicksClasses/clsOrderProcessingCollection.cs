@@ -47,12 +47,13 @@ namespace FireKicksClasses
         public clsOrderProcessingCollection()
         {
 
-            Int32 Index = 0;
-            Int32 RecordCount = 0;
+
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblOrderProcessing_SelectAll");
-            RecordCount = DB.Count;
-            while (Index < RecordCount)
+            PopulateArray(DB);
+        }
+           
+            /*while (Index < RecordCount)
             {
                 clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
                 AnOrderProcessing.OrderID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderID"]);
@@ -63,7 +64,7 @@ namespace FireKicksClasses
                 AnOrderProcessing.Dispatched = Convert.ToBoolean(DB.DataTable.Rows[Index]["Dispatched"]);
                 mOrderProcessingList.Add(AnOrderProcessing);
                 Index++;
-            }
+            }*/
 
 
 
@@ -85,7 +86,7 @@ namespace FireKicksClasses
             TestItem.TotalAmount = 90;
             TestItem.Dispatched = true;
             mOrderProcessingList.Add(TestItem);*/
-        }
+        
 
         public int Add()
         {
@@ -116,6 +117,33 @@ namespace FireKicksClasses
             DB.AddParameter("@Dispatched", mThisOrderProcessing.Dispatched);
             DB.Execute("sproc_tblOrderProcessing_Update");
         }
+
+        public void ReportByTrainerDescription(string TrainerDescription)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@TrainerDescription", TrainerDescription);
+            DB.Execute("sproc_tblOrderProcessing_FilterByTrainerDescription");
+            PopulateArray(DB);
+        }
+
+        void PopulateArray (clsDataConnection DB)
+        {
+            Int32 Index = 0;
+            Int32 RecordCount;
+            RecordCount = DB.Count;
+            mOrderProcessingList = new List<clsOrderProcessing>();
+            while (Index < RecordCount)
+            {
+                clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+                AnOrderProcessing.OrderID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderID"]);
+                AnOrderProcessing.CustomerID = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerID"]);
+                AnOrderProcessing.OrderDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["OrderDate"]);
+                AnOrderProcessing.TrainerDescription = Convert.ToString(DB.DataTable.Rows[Index]["TrainerDescription"]);
+                AnOrderProcessing.TotalAmount = Convert.ToDouble(DB.DataTable.Rows[Index]["TotalAmount"]);
+                AnOrderProcessing.Dispatched = Convert.ToBoolean(DB.DataTable.Rows[Index]["Dispatched"]);
+                mOrderProcessingList.Add(AnOrderProcessing);
+                Index++;
+            }
         }
     }
-}
+    }

@@ -8,14 +8,35 @@ using System.Web.UI.WebControls;
 
 public partial class AnOrderProcessing : System.Web.UI.Page
 {
+    Int32 OrderID;
     protected void Page_Load(object sender, EventArgs e)
     {
-        clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
-        //AnOrderProcessing = (clsOrderProcessing)Session["AnOrderProcessing"];
-        Response.Write(AnOrderProcessing.OrderID);
+        OrderID = Convert.ToInt32(Session["OrderID"]);
+        if (IsPostBack == false)
+        {
+            if (OrderID != -1)
+            {
+                DisplayOrders();
+            }
+        }
     }
 
-    protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
+    //clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+    //AnOrderProcessing = (clsOrderProcessing)Session["AnOrderProcessing"];
+    //Response.Write(AnOrderProcessing.OrderID);
+    void DisplayOrders()
+    {
+        clsOrderProcessingCollection OrderBook = new clsOrderProcessingCollection();
+        OrderBook.ThisOrderProcessing.Find(OrderID);
+        txtOrderID.Text = OrderBook.ThisOrderProcessing.OrderID.ToString();
+        txtCustomerID.Text = OrderBook.ThisOrderProcessing.CustomerID.ToString();
+        txtOrderDate.Text = OrderBook.ThisOrderProcessing.OrderDate.ToString();
+        txtTrainerDescription.Text = OrderBook.ThisOrderProcessing.TrainerDescription.ToString();
+        txtTotalAmount.Text = OrderBook.ThisOrderProcessing.TotalAmount.ToString();
+        chkbxDispatched.Text = OrderBook.ThisOrderProcessing.Dispatched.ToString();
+    }
+
+        protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
     {
 
     }
@@ -48,12 +69,21 @@ public partial class AnOrderProcessing : System.Web.UI.Page
             AnOrderProcessing.OrderDate = Convert.ToDateTime(txtOrderDate.Text);
             AnOrderProcessing.TrainerDescription = txtTrainerDescription.Text;
             AnOrderProcessing.TotalAmount = Convert.ToDouble(txtTotalAmount.Text);
-
             clsOrderProcessingCollection OrderProcessingList = new clsOrderProcessingCollection();
-            OrderProcessingList.ThisOrderProcessing = AnOrderProcessing;
-            OrderProcessingList.Add();
-            Response.Redirect("OrderProcessingList.aspx");
 
+            if (OrderID == -1)
+            {
+                OrderProcessingList.ThisOrderProcessing = AnOrderProcessing;
+                OrderProcessingList.Add();
+            }
+            else
+            {
+                OrderProcessingList.ThisOrderProcessing.Find(OrderID);
+                OrderProcessingList.ThisOrderProcessing = AnOrderProcessing;
+                OrderProcessingList.Update();
+            }
+
+            Response.Redirect("OrderProcessingList.aspx");
         }
         else
         {

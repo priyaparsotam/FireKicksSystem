@@ -32,14 +32,14 @@ namespace FireKicksTesting
             Assert.AreEqual(AllOrders.OrderProcessingList, TestList);
         }
 
-       /* [TestMethod]
-        public void CountOrderOK()
-        {
-            clsOrderProcessingCollection AllOrders = new clsOrderProcessingCollection();
-            Int32 SomeCount = 2;
-            AllOrders.Count = SomeCount;
-            Assert.AreEqual(AllOrders.Count, SomeCount);
-        }*/
+        /* [TestMethod]
+         public void CountOrderOK()
+         {
+             clsOrderProcessingCollection AllOrders = new clsOrderProcessingCollection();
+             Int32 SomeCount = 2;
+             AllOrders.Count = SomeCount;
+             Assert.AreEqual(AllOrders.Count, SomeCount);
+         }*/
 
         [TestMethod]
         public void ThisOrderOK()
@@ -128,7 +128,6 @@ namespace FireKicksTesting
             clsOrderProcessingCollection AllOrders = new clsOrderProcessingCollection();
             clsOrderProcessing TestItem = new clsOrderProcessing();
             Int32 PrimaryKey = 0;
-            TestItem.OrderID = 1;
             TestItem.CustomerID = 1;
             TestItem.OrderDate = DateTime.Now.Date;
             TestItem.TrainerDescription = "some Description";
@@ -137,7 +136,6 @@ namespace FireKicksTesting
             AllOrders.ThisOrderProcessing = TestItem;
             PrimaryKey = AllOrders.Add();
             TestItem.OrderID = PrimaryKey;
-            TestItem.OrderID = 1;
             TestItem.CustomerID = 1;
             TestItem.OrderDate = DateTime.Now.Date;
             TestItem.TrainerDescription = "some Description";
@@ -149,5 +147,46 @@ namespace FireKicksTesting
             Assert.AreEqual(AllOrders.ThisOrderProcessing, TestItem);
         }
 
+        [TestMethod]
+        public void ReportByTrainerDescriptionOK()
+        {
+            clsOrderProcessingCollection AllOrders = new clsOrderProcessingCollection();
+            clsOrderProcessingCollection FilteredOrders = new clsOrderProcessingCollection();
+            FilteredOrders.ReportByTrainerDescription("");
+            Assert.AreEqual(AllOrders.Count, FilteredOrders.Count);
         }
+
+        [TestMethod]
+        public void ReportByTrainerDescriptionNoneFound()
+        {
+            clsOrderProcessingCollection FilteredOrders = new clsOrderProcessingCollection();
+            FilteredOrders.ReportByTrainerDescription("xxx xxx");
+            Assert.AreEqual(0, FilteredOrders.Count);
+        }
+
+        [TestMethod]
+        public void ReportByTrainerDescriptionTestDataFound()
+        {
+            clsOrderProcessingCollection FilteredOrders = new clsOrderProcessingCollection();
+            Boolean OK = true;
+            FilteredOrders.ReportByTrainerDescription("Converse");
+            if (FilteredOrders.Count == 2)
+            {
+                if (FilteredOrders.OrderProcessingList[0].OrderID != 6)
+                {
+                    OK = false;
+                }
+                if (FilteredOrders.OrderProcessingList[1].OrderID != 7)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+                Assert.IsTrue(OK);
+            }
+        
+    }
 }
