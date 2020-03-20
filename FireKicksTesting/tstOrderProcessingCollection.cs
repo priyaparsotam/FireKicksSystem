@@ -188,5 +188,5 @@ namespace FireKicksTesting
                 Assert.IsTrue(OK);
             }
         
-    }
+}
 }
