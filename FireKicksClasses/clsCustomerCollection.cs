@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using TrainerClasses;
 
 namespace FireKicksClasses
 {
     public class clsCustomerCollection
     {
         List<clsCustomer> mCustomerList = new List<clsCustomer>();
+        clsCustomer mThisCustomer = new clsCustomer();
         public List<clsCustomer> CustomerList
         {
             get
@@ -18,8 +18,18 @@ namespace FireKicksClasses
                 mCustomerList = value;
             }
         }
-        public clsCustomer ThisCustomer { get; set; }
-        
+        public clsCustomer ThisCustomer
+        {
+            get
+            {
+                return mThisCustomer;
+            }
+            set
+            {
+                mThisCustomer = value;
+            }
+        }
+
         public int Count
         {
             get
@@ -52,6 +62,43 @@ namespace FireKicksClasses
                 mCustomerList.Add(ACustomer);
                 Index++;
             }
+        }
+
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@CustomerName", mThisCustomer.CustomerName);
+            DB.AddParameter("@CustomerEmail", mThisCustomer.CustomerEmail);
+            DB.AddParameter("@CustomerPassword", mThisCustomer.CustomerPassword);
+            DB.AddParameter("@CustomerAddress", mThisCustomer.CustomerAddress);
+            DB.AddParameter("@CustomerDOB", mThisCustomer.CustomerDOB);
+            DB.AddParameter("@ReceiveMail", mThisCustomer.ReceiveMail);
+            return DB.Execute("sproc_tblCustomer_Insert");
+        }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("CustomerID", mThisCustomer.CustomerID);
+            DB.Execute("sproc_tblCustomer_Delete");
+        }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@CustomerID", mThisCustomer.CustomerID);
+            DB.AddParameter("@CustomerName", mThisCustomer.CustomerName);
+            DB.AddParameter("@CustomerEmail", mThisCustomer.CustomerEmail);
+            DB.AddParameter("@CustomerPassword", mThisCustomer.CustomerPassword);
+            DB.AddParameter("@CustomerAddress", mThisCustomer.CustomerAddress);
+            DB.AddParameter("@CustomerDOB", mThisCustomer.CustomerDOB);
+            DB.AddParameter("@ReceiveMail", mThisCustomer.ReceiveMail);
+            DB.Execute("sproc_tblCustomer_Update");
+        }
+
+        public void Filter(string CustomerName)
+        {
+            
         }
     }
 }

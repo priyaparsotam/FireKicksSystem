@@ -1,14 +1,15 @@
-﻿using System;
+﻿using FireKicksClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TrainerClasses;
+
 
 public partial class ACustomer : System.Web.UI.Page
 {
-
+    Int32 CustomerID;
 
     protected void Button1_Click1(object sender, EventArgs e)
     {
@@ -35,13 +36,26 @@ public partial class ACustomer : System.Web.UI.Page
         Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerPassword, CustomerAddress, CustomerDOB);
         if (Error == "")
         {
+            ACustomer.CustomerID = CustomerID;
             ACustomer.CustomerName = txtCustomerName.Text;
             ACustomer.CustomerEmail = txtCustomerEmail.Text;
             ACustomer.CustomerPassword = txtCustomerPassword.Text;
             ACustomer.CustomerAddress = txtCustomerAddress.Text;
             ACustomer.CustomerDOB = Convert.ToDateTime(CustomerDOB);
-            Session["ACustomer"] = ACustomer;
-            Response.Redirect("CustomerViewer.aspx");
+            ACustomer.ReceiveMail = chkReceiveMail.Checked;
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
+            if (CustomerID == -1)
+            {
+                CustomerList.ThisCustomer = ACustomer;
+                CustomerList.Add();
+            }
+            else
+            {
+                CustomerList.ThisCustomer.Find(CustomerID);
+                CustomerList.ThisCustomer = ACustomer;
+                CustomerList.Update();
+            }
+            Response.Redirect("CustomerList.aspx");
         }
         else
         {
@@ -65,4 +79,29 @@ public partial class ACustomer : System.Web.UI.Page
             txtCustomerAddress.Text = ACustomer.CustomerAddress;
         }
     }
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        CustomerID = Convert.ToInt32(Session["CustomerID"]);
+        if (IsPostBack == false)
+        {
+            if (CustomerID != -1)
+            {
+                DisplayCustomer();
+            }
+        }
+    }
+
+     void DisplayCustomer()
+     {
+        clsCustomerCollection CustomerBook = new clsCustomerCollection();
+        CustomerBook.ThisCustomer.Find(CustomerID);
+        txtCustomerID.Text = CustomerBook.ThisCustomer.CustomerID.ToString();
+        txtCustomerName.Text = CustomerBook.ThisCustomer.CustomerName;
+        txtCustomerEmail.Text = CustomerBook.ThisCustomer.CustomerEmail;
+        txtCustomerPassword.Text = CustomerBook.ThisCustomer.CustomerPassword;
+        txtCustomerAddress.Text = CustomerBook.ThisCustomer.CustomerAddress;
+        txtCustomerDob.Text = CustomerBook.ThisCustomer.CustomerDOB.ToString();
+        chkReceiveMail.Checked = CustomerBook.ThisCustomer.ReceiveMail;
+     }
 }

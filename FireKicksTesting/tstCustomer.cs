@@ -1,8 +1,9 @@
 ﻿using System;
+using FireKicksClasses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TrainerClasses;
 
-namespace TrainerTesting
+
+namespace FireKicksTesting
 {
     [TestClass]
     public class tstCustomer
@@ -88,7 +89,7 @@ namespace TrainerTesting
         {
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
-            Int32 CustomerID = 1;
+            Int32 CustomerID = 2;
             Found = ACustomer.Find(CustomerID);
             Assert.IsTrue(Found);
         }
@@ -99,9 +100,9 @@ namespace TrainerTesting
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerID = 1;
+            Int32 CustomerID = 2;
             Found = ACustomer.Find(CustomerID);
-            if (ACustomer.CustomerID != 1)
+            if (ACustomer.CustomerID != 2)
             {
                 OK = false;
             }
@@ -114,9 +115,9 @@ namespace TrainerTesting
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerID = 1;
+            Int32 CustomerID = 2;
             Found = ACustomer.Find(CustomerID);
-            if (ACustomer.CustomerDOB != Convert.ToDateTime("2/5/1999"))
+            if (ACustomer.CustomerDOB != Convert.ToDateTime("27/3/2020"))
             {
                 OK = false;
             }
@@ -129,9 +130,9 @@ namespace TrainerTesting
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerID = 1;
+            Int32 CustomerID = 2;
             Found = ACustomer.Find(CustomerID);
-            if (ACustomer.CustomerName != "Ignatius")
+            if (ACustomer.CustomerName != "Shin Yi")
             {
                 OK = false;
             }
@@ -144,9 +145,9 @@ namespace TrainerTesting
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerID = 1;
+            Int32 CustomerID = 2;
             Found = ACustomer.Find(CustomerID);
-            if (ACustomer.CustomerEmail != "stupid@gmail.com")
+            if (ACustomer.CustomerEmail != "qwer0408@gmail.com")
             {
                 OK = false;
             }
@@ -159,9 +160,9 @@ namespace TrainerTesting
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerID = 1;
+            Int32 CustomerID = 2;
             Found = ACustomer.Find(CustomerID);
-            if (ACustomer.CustomerAddress != "19")
+            if (ACustomer.CustomerAddress != "123")
             {
                 OK = false;
             }
@@ -174,9 +175,9 @@ namespace TrainerTesting
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerID = 1;
+            Int32 CustomerID = 2;
             Found = ACustomer.Find(CustomerID);
-            if (ACustomer.CustomerPassword != "123")
+            if (ACustomer.CustomerPassword != "3")
             {
                 OK = false;
             }
@@ -189,7 +190,7 @@ namespace TrainerTesting
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerID = 1;
+            Int32 CustomerID = 2;
             Found = ACustomer.Find(CustomerID);
             if (ACustomer.ReceiveMail != true)
             {
@@ -295,11 +296,12 @@ namespace TrainerTesting
             String Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
-            TestDate = TestDate.AddDays(-1);
+            TestDate = TestDate.AddDays(-100);
             string CustomerDOB = TestDate.ToString();
             Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerPassword, CustomerAddress, CustomerDOB);
             Assert.AreNotEqual(Error, "");
         }
+
         [TestMethod]
         public void CustomerDOBMinLessOne()
         {

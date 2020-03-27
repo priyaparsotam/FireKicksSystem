@@ -6,8 +6,7 @@ using System.Text;
 
 
 
-namespace TrainerClasses
-{
+namespace FireKicksClasses { 
     public class clsCustomer
     {
         
