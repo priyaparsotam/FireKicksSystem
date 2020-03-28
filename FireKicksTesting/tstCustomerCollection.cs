@@ -133,8 +133,9 @@ namespace FireKicksTesting
         {
             clsCustomerCollection AllCustomer = new clsCustomerCollection();
             clsCustomer TestItem = new clsCustomer();
+            //var to store the primary key
             Int32 PrimaryKey = 0;
-            TestItem.CustomerID = 1;
+            TestItem.CustomerID = 2;
             TestItem.CustomerName = "Shin Yi";
             TestItem.CustomerEmail = "shinyi0408@gmail.com";
             TestItem.CustomerPassword = "123";
@@ -158,21 +159,49 @@ namespace FireKicksTesting
         }
 
         [TestMethod]
-        public void FilterMethodOK()
+        public void ReportByCustomerNameMethodOK()
         {
             clsCustomerCollection AllCustomer = new clsCustomerCollection();
             clsCustomerCollection FilteredCustomer = new clsCustomerCollection();
-            FilteredCustomer.Filter("");
+            FilteredCustomer.ReportByCustomerName("");
             Assert.AreEqual(AllCustomer.Count, FilteredCustomer.Count);
         }
 
+
         [TestMethod]
-        public void FilterNoneFound()
+        public void ReportByCustomerNameNoneMethodOK()
         {
             clsCustomerCollection FilteredCustomer = new clsCustomerCollection();
-            FilteredCustomer.Filter("xxx xxx");
+            FilteredCustomer.ReportByCustomerName("xxx xxx");
             Assert.AreEqual(0, FilteredCustomer.Count);
         }
+
+        [TestMethod]
+        public void ReportByCustomerNameTestDataFound()
+        {
+            clsCustomerCollection FilteredCustomer = new clsCustomerCollection();
+            Boolean OK = true;
+            FilteredCustomer.ReportByCustomerName("Ignatius");
+            if (FilteredCustomer.Count == 2)
+            {
+                if (FilteredCustomer.CustomerList[0].CustomerID != 51)
+                {
+                    OK = false;
+                }
+                if (FilteredCustomer.CustomerList[1].CustomerID != 73)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+
+
     }
 }
 

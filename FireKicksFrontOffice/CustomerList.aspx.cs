@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FireKicksClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -33,7 +34,7 @@ public partial class CustomerList : System.Web.UI.Page
         {
             CustomerID = Convert.ToInt32(lstCustomerList.SelectedValue);
             Session["CustomerID"] = CustomerID;
-            Response.Redirect("DeleteCustomer.aspx");
+           Response.Redirect("DeleteCustomer.aspx");
         }
         else
         {
@@ -64,5 +65,26 @@ public partial class CustomerList : System.Web.UI.Page
         {
             lblError.Text = "Please select a record to delete from the list";
         }
+    }
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        clsCustomerCollection Customer = new clsCustomerCollection();
+        Customer.ReportByCustomerName(txtFilter.Text);
+        lstCustomerList.DataSource = Customer.CustomerList;
+        lstCustomerList.DataValueField = "CustomerID";
+        lstCustomerList.DataTextField = "CustomerName";
+        lstCustomerList.DataBind();
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        clsCustomerCollection Customer = new clsCustomerCollection();
+        Customer.ReportByCustomerName("");
+        txtFilter.Text = "";
+        lstCustomerList.DataSource = Customer.CustomerList;
+        lstCustomerList.DataValueField = "CustomerID";
+        lstCustomerList.DataTextField = "CustomerName";
+        lstCustomerList.DataBind();
     }
 }

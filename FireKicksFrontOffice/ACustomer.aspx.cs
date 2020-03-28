@@ -37,10 +37,10 @@ public partial class ACustomer : System.Web.UI.Page
         if (Error == "")
         {
             ACustomer.CustomerID = CustomerID;
-            ACustomer.CustomerName = txtCustomerName.Text;
-            ACustomer.CustomerEmail = txtCustomerEmail.Text;
-            ACustomer.CustomerPassword = txtCustomerPassword.Text;
-            ACustomer.CustomerAddress = txtCustomerAddress.Text;
+            ACustomer.CustomerName = CustomerName;
+            ACustomer.CustomerEmail = CustomerEmail;
+            ACustomer.CustomerPassword = CustomerPassword;
+            ACustomer.CustomerAddress = CustomerAddress;
             ACustomer.CustomerDOB = Convert.ToDateTime(CustomerDOB);
             ACustomer.ReceiveMail = chkReceiveMail.Checked;
             clsCustomerCollection CustomerList = new clsCustomerCollection();
@@ -92,8 +92,8 @@ public partial class ACustomer : System.Web.UI.Page
         }
     }
 
-     void DisplayCustomer()
-     {
+    void DisplayCustomer()
+    {
         clsCustomerCollection CustomerBook = new clsCustomerCollection();
         CustomerBook.ThisCustomer.Find(CustomerID);
         txtCustomerID.Text = CustomerBook.ThisCustomer.CustomerID.ToString();
@@ -103,5 +103,5 @@ public partial class ACustomer : System.Web.UI.Page
         txtCustomerAddress.Text = CustomerBook.ThisCustomer.CustomerAddress;
         txtCustomerDob.Text = CustomerBook.ThisCustomer.CustomerDOB.ToString();
         chkReceiveMail.Checked = CustomerBook.ThisCustomer.ReceiveMail;
-     }
+    }
 }
