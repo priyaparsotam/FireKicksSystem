@@ -8,9 +8,26 @@ using System.Web.UI.WebControls;
 
 public partial class AnOrderLine : System.Web.UI.Page
 {
+    Int32 OrderLineID;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        OrderLineID = Convert.ToInt32(Session["OrderLineID"]);
+        if (IsPostBack == false)
+        {
+            if (OrderLineID != -1)
+            {
+                DisplayOrderLine();
+            }
+        }
+    }
+    void DisplayOrderLine()
+    {
+        clsOrderLineCollection OrderLineBook = new clsOrderLineCollection();
+        OrderLineBook.ThisOrderLine.Find(OrderLineID);
+        txtOrderLineID.Text = OrderLineBook.ThisOrderLine.OrderLineID.ToString();
+        txtOrderID.Text = OrderLineBook.ThisOrderLine.OrderID.ToString();
+        txtProductID.Text = OrderLineBook.ThisOrderLine.ProductID.ToString();
+        txtQuantity.Text = OrderLineBook.ThisOrderLine.Quantity.ToString();
     }
 
     protected void btnOk_Click(object sender, EventArgs e)
@@ -27,16 +44,26 @@ public partial class AnOrderLine : System.Web.UI.Page
             AnOrderLine.OrderID = Convert.ToInt32(OrderID);
             AnOrderLine.ProductID = Convert.ToInt32(ProductID);
             AnOrderLine.Quantity = Convert.ToInt32(Quantity);
-            Session["AnOrderLine"] = AnOrderLine;
-            Response.Write("OrderLineViewer.aspx");
+            clsOrderLineCollection OrderLineList = new clsOrderLineCollection();
+            if (OrderLineID == -1)
+            {
+                OrderLineList.ThisOrderLine = AnOrderLine;
+                OrderLineList.Add();
+            }
+            else
+            {
+                OrderLineList.ThisOrderLine.Find(OrderLineID);
+                OrderLineList.ThisOrderLine = AnOrderLine;
+                OrderLineList.Update();
+            }
+            Response.Redirect("OrderLineList.aspx");
         }
         else
         {
             lblError.Text = Error;
         }
+
     }
-
-
     protected void btnFind_Click(object sender, EventArgs e)
     {
         clsOrderLine AnOrderLine = new clsOrderLine();

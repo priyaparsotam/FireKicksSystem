@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="clsDataConnection.cs" />
     <Compile Include="clsOrderLine.cs" />
+    <Compile Include="clsOrderLineCollection.cs" />
     <Compile Include="clsOrderProcessing.cs" />
     <Compile Include="clsOrderProcessingCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

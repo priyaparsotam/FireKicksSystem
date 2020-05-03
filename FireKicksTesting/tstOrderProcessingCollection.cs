@@ -164,7 +164,7 @@ namespace FireKicksTesting
             Assert.AreEqual(0, FilteredOrders.Count);
         }
 
-        [TestMethod]
+        /*[TestMethod]
         public void ReportByTrainerDescriptionTestDataFound()
         {
             clsOrderProcessingCollection FilteredOrders = new clsOrderProcessingCollection();
@@ -186,7 +186,7 @@ namespace FireKicksTesting
                 OK = false;
             }
                 Assert.IsTrue(OK);
-            }
+            }*/
         
 }
 }
