@@ -21,21 +21,29 @@ public partial class ACustomer : System.Web.UI.Page
         clsCustomer ACustomer = new clsCustomer();
         ACustomer.CustomerName = txtCustomerName.Text;
         Session["ACustomer"] = ACustomer;
-        Response.Redirect("CustomerViewer.aspx");
+        Response.Redirect("CustomerList.aspx");
     }
 
     protected void OkButton_Click(object sender, EventArgs e)
     {
+        //create a new instance of clsCustomer
         clsCustomer ACustomer = new clsCustomer();
+        //capture the customer name
         string CustomerName = txtCustomerName.Text;
+        //capture the customer email
         string CustomerEmail = txtCustomerEmail.Text;
+        //capture the customer password
         string CustomerPassword = txtCustomerPassword.Text;
+        //capture the customer address
         string CustomerAddress = txtCustomerAddress.Text;
+        //capture the customer dob
         string CustomerDOB = txtCustomerDob.Text;
+        //validate the data
         string Error = "";
         Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerPassword, CustomerAddress, CustomerDOB);
         if (Error == "")
         {
+
             ACustomer.CustomerID = CustomerID;
             ACustomer.CustomerName = CustomerName;
             ACustomer.CustomerEmail = CustomerEmail;
@@ -59,19 +67,27 @@ public partial class ACustomer : System.Web.UI.Page
         }
         else
         {
-            lblError.Text = Error;
+            //display the error message
+            lblError.Text = "There were problems with the data entered. "+ Error;
         }
     }
 
     protected void FindButton_Click(object sender, EventArgs e)
     {
+        //create an instance of the customer class
         clsCustomer ACustomer = new clsCustomer();
+        //variable to store the primary key
         Int32 CustomerID;
+        //variable to store the result of the find operation
         Boolean Found = false;
+        //get the primary key entered by the user
         CustomerID = Convert.ToInt32(txtCustomerID.Text);
+        //find the record
         Found = ACustomer.Find(CustomerID);
+        //if found
         if (Found == true)
         {
+            //display the values of the properties in the form
             txtCustomerEmail.Text = ACustomer.CustomerEmail;
             txtCustomerName.Text = ACustomer.CustomerName;
             txtCustomerPassword.Text = ACustomer.CustomerPassword;

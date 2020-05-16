@@ -89,9 +89,13 @@ namespace FireKicksTesting
         [TestMethod]
         public void AddMethodOK()
         {
+            //create an instance of the class we want to create
             clsCustomerCollection AllCustomer = new clsCustomerCollection();
+            //create the item of test data
             clsCustomer TestItem = new clsCustomer();
+            //var to store primary key
             Int32 PrimaryKey = 0;
+            //set its properties
             TestItem.CustomerID = 1;
             TestItem.CustomerName = "Shin Yi";
             TestItem.CustomerEmail = "shinyi0408@gmail.com";
@@ -99,19 +103,28 @@ namespace FireKicksTesting
             TestItem.CustomerAddress = "19";
             TestItem.CustomerDOB = DateTime.Now.Date;
             TestItem.ReceiveMail = true;
+            //set ThisCustomer to the test data
             AllCustomer.ThisCustomer = TestItem;
+            //add the record
             PrimaryKey = AllCustomer.Add();
+            //set the primary key of the test data
             TestItem.CustomerID = PrimaryKey;
+            //find the record
             AllCustomer.ThisCustomer.Find(PrimaryKey);
+            //test to see that the two values are the same
             Assert.AreEqual(AllCustomer.ThisCustomer, TestItem);
         }
 
         [TestMethod]
         public void DeleteMethodOK()
         {
+            //create an instance of the class we want to create
             clsCustomerCollection AllCustomer = new clsCustomerCollection();
+            //create the item of test data
             clsCustomer TestItem = new clsCustomer();
+            //var to store the primary key
             Int32 PrimaryKey = 0;
+            //set its properties
             TestItem.CustomerID = 1;
             TestItem.CustomerName = "Shin Yi";
             TestItem.CustomerEmail = "shinyi0408@gmail.com";
@@ -119,12 +132,19 @@ namespace FireKicksTesting
             TestItem.CustomerAddress = "19";
             TestItem.CustomerDOB = DateTime.Now.Date;
             TestItem.ReceiveMail = true;
+            //set ThisCustomer to the test data
             AllCustomer.ThisCustomer = TestItem;
+            //add the record
             PrimaryKey = AllCustomer.Add();
+            //set the primary key of the test data
             TestItem.CustomerID = PrimaryKey;
+            //find the record
             AllCustomer.ThisCustomer.Find(PrimaryKey);
+            //delete the record
             AllCustomer.Delete();
+            //now find the record
             Boolean Found = AllCustomer.ThisCustomer.Find(PrimaryKey);
+            //test to see that the record was not found
             Assert.IsFalse(Found);
         }
 
