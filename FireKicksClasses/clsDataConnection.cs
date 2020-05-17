@@ -34,6 +34,10 @@ public class clsDataConnection
     private string GetConnectionString()
     {
         System.Net.WebClient client = new System.Net.WebClient();
+
+
+
+
         string downloadString = client.DownloadString("http://localhost:5000/");
         return downloadString;
     }

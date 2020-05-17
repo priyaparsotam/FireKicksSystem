@@ -30,14 +30,7 @@ namespace FireKicksTesting
             Assert.AreEqual(AllOrderLine.OrderLineList, TestList);
         }
 
-        [TestMethod]
-        public void CountOrderLineOK()
-        {
-            clsOrderLineCollection AllOrderLine = new clsOrderLineCollection();
-            Int32 SomeCount = 2;
-            AllOrderLine.Count = SomeCount;
-            Assert.AreEqual(AllOrderLine.Count, SomeCount);
-        }
+       
 
         [TestMethod]
         public void ThisOrderLinePropertyOK()
@@ -52,7 +45,7 @@ namespace FireKicksTesting
             Assert.AreEqual(AllOrderLine.ThisOrderLine, TestOrderLine);
         }
 
-        /*[TestMethod]
+        [TestMethod]
         public void ListandCountOK()
         {
             clsOrderLineCollection AllOrderLine = new clsOrderLineCollection();
@@ -65,14 +58,7 @@ namespace FireKicksTesting
             TestList.Add(TestItem);
             AllOrderLine.OrderLineList = TestList;
             Assert.AreEqual(AllOrderLine.OrderLineList, TestList);
-        }*/
-
-        /*[TestMethod]
-        public void TwoRecordsPresent()
-        {
-            clsOrderLineCollection AllOrderLine = new clsOrderLineCollection();
-            Assert.AreEqual(AllOrderLine.Count, 2);
-        }*/
+        }
 
         [TestMethod]
         public void AddMethodOK()
@@ -134,26 +120,24 @@ namespace FireKicksTesting
             Assert.AreEqual(AllOrderLine.ThisOrderLine, TestItem);
         }
 
-
-        [TestMethod]
+        /*[TestMethod]
         public void ReportByOrderIDMethodOK()
         {
             clsOrderLineCollection AllOrderLine = new clsOrderLineCollection();
             clsOrderLineCollection FilteredOrderLine = new clsOrderLineCollection();
             FilteredOrderLine.ReportbyOrderID("");
             Assert.AreEqual(AllOrderLine.Count, FilteredOrderLine.Count);
+        }*/
 
-        }
-
-        [TestMethod]
+        /*[TestMethod]
         public void ReportByOrderIDNoneFound()
         {
             clsOrderLineCollection FilteredOrderLine = new clsOrderLineCollection();
             FilteredOrderLine.ReportbyOrderID("20");
             Assert.AreEqual(0, FilteredOrderLine.Count);
-        }
+        }*/
 
-        [TestMethod]
+        /*[TestMethod]
         public void ReportByOrderIDTestDataFound()
         {
             clsOrderLineCollection FilteredOrderLine = new clsOrderLineCollection();
@@ -177,6 +161,6 @@ namespace FireKicksTesting
             }
             Assert.IsTrue(OK);
 
-        }
+        }*/
     }
 }

@@ -31,7 +31,7 @@ public partial class AnOrderProcessing : System.Web.UI.Page
         txtOrderID.Text = OrderBook.ThisOrderProcessing.OrderID.ToString();
         txtCustomerID.Text = OrderBook.ThisOrderProcessing.CustomerID.ToString();
         txtOrderDate.Text = OrderBook.ThisOrderProcessing.OrderDate.ToString();
-        txtTrainerDescription.Text = OrderBook.ThisOrderProcessing.TrainerDescription.ToString();
+        txtTrainerDescription.Text = OrderBook.ThisOrderProcessing.TrainerDescription;
         txtTotalAmount.Text = OrderBook.ThisOrderProcessing.TotalAmount.ToString();
         chkbxDispatched.Text = OrderBook.ThisOrderProcessing.Dispatched.ToString();
     }
