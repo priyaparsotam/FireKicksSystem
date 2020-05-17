@@ -93,6 +93,7 @@ public partial class ACustomer : System.Web.UI.Page
             txtCustomerPassword.Text = ACustomer.CustomerPassword;
             txtCustomerDob.Text = ACustomer.CustomerDOB.ToString();
             txtCustomerAddress.Text = ACustomer.CustomerAddress;
+            chkReceiveMail.Checked = ACustomer.ReceiveMail;
         }
     }
 

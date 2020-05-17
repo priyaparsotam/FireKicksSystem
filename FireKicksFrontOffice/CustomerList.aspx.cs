@@ -71,22 +71,30 @@ public partial class CustomerList : System.Web.UI.Page
         }
         else
         {
-            lblError.Text = "Please select a record to delete from the list";
+            lblError.Text = "Please select a record to edit from the list";
         }
     }
 
     protected void btnApply_Click(object sender, EventArgs e)
     {
-        //create an instance of the customer collection
-        clsCustomerCollection Customer = new clsCustomerCollection();
-        Customer.ReportByCustomerName(txtFilter.Text);
-        lstCustomerList.DataSource = Customer.CustomerList;
-        //set the name of the primary key
-        lstCustomerList.DataValueField = "CustomerID";
-        //set the name of the textfield to display
-        lstCustomerList.DataTextField = "CustomerName";
-        //bind the data to the list
-        lstCustomerList.DataBind();
+        if (txtFilter.Text != "")
+        {
+            //create an instance of the customer collection
+            clsCustomerCollection Customer = new clsCustomerCollection();
+            Customer.ReportByCustomerName(txtFilter.Text);
+            lstCustomerList.DataSource = Customer.CustomerList;
+            //set the name of the primary key
+            lstCustomerList.DataValueField = "CustomerID";
+            //set the name of the textfield to display
+            lstCustomerList.DataTextField = "CustomerName";
+            //bind the data to the list
+            lstCustomerList.DataBind();
+        }
+        else
+        {
+            lblError.Text = "Please enter a name";
+        }
+   
     }
 
     protected void btnClear_Click(object sender, EventArgs e)

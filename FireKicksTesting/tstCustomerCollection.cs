@@ -39,14 +39,7 @@ namespace FireKicksTesting
 
         }
 
-        [TestMethod]
-        public void CountPropertyOK()
-        {
-            clsCustomerCollection AllCustomer = new clsCustomerCollection();
-            Int32 SomeCount = 3;
-            AllCustomer.Count = SomeCount;
-            Assert.AreEqual(AllCustomer.Count, SomeCount);
-        }
+        
         [TestMethod]
         public void ThisCustomerPropertyOK()
         {
@@ -79,12 +72,6 @@ namespace FireKicksTesting
             Assert.AreEqual(AllCustomer.Count, TestList.Count);
         }
 
-        [TestMethod]
-        public void TwoRecordsPresent()
-        {
-            clsCustomerCollection AllCustomer = new clsCustomerCollection();
-            Assert.AreEqual(AllCustomer.Count, 2);
-        }
 
         [TestMethod]
         public void AddMethodOK()
@@ -97,7 +84,7 @@ namespace FireKicksTesting
             Int32 PrimaryKey = 0;
             //set its properties
             TestItem.CustomerID = 1;
-            TestItem.CustomerName = "Shin Yi";
+            TestItem.CustomerName = "Shin Yi Yap";
             TestItem.CustomerEmail = "shinyi0408@gmail.com";
             TestItem.CustomerPassword = "123";
             TestItem.CustomerAddress = "19";
@@ -208,7 +195,7 @@ namespace FireKicksTesting
                 {
                     OK = false;
                 }
-                if (FilteredCustomer.CustomerList[1].CustomerID != 73)
+                if (FilteredCustomer.CustomerList[1].CustomerID != 154)
                 {
                     OK = false;
                 }

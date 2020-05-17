@@ -9,11 +9,11 @@ namespace FireKicksTesting
     public class tstCustomer
     {
         //create some test data to pass to the method
-        string CustomerName = "Shin Yi";
+        string CustomerName = "Testing";
         string CustomerEmail = "shinyi0408@gmail.com";
         string CustomerPassword = "123";
         string CustomerAddress = "19";
-        string CustomerDOB = DateTime.Now.Date.ToString();
+        string CustomerDOB = DateTime.Now.Date.AddYears(-20).ToString();
 
         [TestMethod]
         public void InstanceOK()
@@ -162,11 +162,11 @@ namespace FireKicksTesting
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerID = 2;
+            Int32 CustomerID = 51;
             //invoke the method
             Found = ACustomer.Find(CustomerID);
             //check the property
-            if (ACustomer.CustomerDOB != Convert.ToDateTime("16/5/2020"))
+            if (ACustomer.CustomerDOB != Convert.ToDateTime("8/9/1997"))
             {
                 OK = false;
             }
@@ -272,7 +272,7 @@ namespace FireKicksTesting
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerID = 2;
+            Int32 CustomerID = 26;
             //invoke the method
             Found = ACustomer.Find(CustomerID);
             //check the property
@@ -313,7 +313,7 @@ namespace FireKicksTesting
         }
 
         [TestMethod]
-        public void CustomerNameNoMin()
+        public void CustomerNameMin()
         {
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
@@ -343,7 +343,7 @@ namespace FireKicksTesting
         }
 
         [TestMethod]
-        public void CustomerNameNoMax()
+        public void CustomerNameMax()
         {
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
@@ -384,28 +384,23 @@ namespace FireKicksTesting
         }
 
         [TestMethod]
-        public void CustomerDOBExtremeMin()
+        public void CustomerDOBMaxLessOne()
         {
+            //create an instance of the class we want to create
             clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
             String Error = "";
+            //create a variable to store the test date data
             DateTime TestDate;
+            //set the date to todays date
             TestDate = DateTime.Now.Date;
-            TestDate = TestDate.AddYears(-100);
+            //set the date to today's date minus 102years
+            TestDate = TestDate.AddYears(-102);
+            //convert the date variable to a string variable
             string CustomerDOB = TestDate.ToString();
+            //invoke the method
             Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerPassword, CustomerAddress, CustomerDOB);
-            Assert.AreNotEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void CustomerDOBMinLessOne()
-        {
-            clsCustomer ACustomer = new clsCustomer();
-            String Error = "";
-            DateTime TestDate;
-            TestDate = DateTime.Now.Date;
-            TestDate = TestDate.AddDays(-1);
-            string CustomerDOB = TestDate.ToString();
-            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerPassword, CustomerAddress, CustomerDOB);
+            //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
 
@@ -418,8 +413,10 @@ namespace FireKicksTesting
             String Error = "";
             //create a variable to store the test date data
             DateTime TestDate;
-            //set the date totodays date
+            //set the date to todays date
             TestDate = DateTime.Now.Date;
+            //set the date to today's date minus 18years
+            TestDate = TestDate.AddYears(-18);
             //convert the date variable to a string variable
             string CustomerDOB = TestDate.ToString();
             //invoke the method
@@ -427,47 +424,48 @@ namespace FireKicksTesting
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
-        //[TestMethod]
-        //public void CustomerDOBMinPlusOne()
-        //{
-        //    //create an instance of the class we want to create
-        //    clsCustomer ACustomer = new clsCustomer();
-        //    //string variable to store any error message
-        //    String Error = "";
-        //    //create a variable to store the test date data
-        //    DateTime TestDate;
-        //    //set the date totodays date
-        //    TestDate = DateTime.Now.Date;
-        //    //change the date to whatever the date is plus 1 day
-        //    TestDate = TestDate.AddDays(1);
-        //    //convert the date variable to a string variable
-        //    string CustomerDOB = TestDate.ToString();
-        //    //invoke the method
-        //    Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerPassword, CustomerAddress, CustomerDOB);
-        //    //test to see that the result is correct
-        //    Assert.AreNotEqual(Error, "");
-        //}
 
-        //[TestMethod]
-        //public void CustomerDOBExtremeMax()
-        //{
-        //    //create an instance of the class we want to create
-        //    clsCustomer ACustomer = new clsCustomer();
-        //    //string variable to store any error message
-        //    String Error = "";
-        //    //create a variable to store the test date data
-        //    DateTime TestDate;
-        //    //set the date totodays date
-        //    TestDate = DateTime.Now.Date;
-        //    //change the date to whatever the date is plus 100 years
-        //    TestDate = TestDate.AddYears(100);
-        //    //convert the date variable to a string variable
-        //    string CustomerDOB = TestDate.ToString();
-        //    //invoke the method
-        //    Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerPassword, CustomerAddress, CustomerDOB);
-        //    //test to see that the result is correct
-        //    Assert.AreNotEqual(Error, "");
-        //}
+        [TestMethod]
+        public void CustomerDOBMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is minus 17years
+            TestDate = TestDate.AddYears(-17);
+            //convert the date variable to a string variable
+            string CustomerDOB = TestDate.ToString();
+            //invoke the method
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerPassword, CustomerAddress, CustomerDOB);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerDOBMax()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is plus 101 years
+            TestDate = TestDate.AddYears(-101);
+            //convert the date variable to a string variable
+            string CustomerDOB = TestDate.ToString();
+            //invoke the method
+            Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerPassword, CustomerAddress, CustomerDOB);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
 
         [TestMethod]
         public void CustomerDOBInvalidData()

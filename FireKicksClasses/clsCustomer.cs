@@ -190,15 +190,16 @@ namespace FireKicksClasses {
             try
             {
                 DateTemp = Convert.ToDateTime(customerDOB);
+                if (DateTemp > DateTime.Now.Date.AddYears(-18))
+                {
+                    Error = Error + "You are too young , must be age 18 : ";
+                }
                 if (DateTemp < DateTime.Now.Date.AddYears(-100))
                 {
-                    Error = Error + "The date cannot be less than 100 years from todays date : ";
-                }
-                if (DateTemp > DateTime.Now.Date)
-                {
                     //record the error
-                    Error = Error + "The date cannot be in the future : ";
+                    Error = Error + "The date cannot be less than 100 years : ";
                 }
+
             }
             catch
             {
