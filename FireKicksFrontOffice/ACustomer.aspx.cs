@@ -94,6 +94,17 @@ public partial class ACustomer : System.Web.UI.Page
             txtCustomerDob.Text = ACustomer.CustomerDOB.ToString();
             txtCustomerAddress.Text = ACustomer.CustomerAddress;
             chkReceiveMail.Checked = ACustomer.ReceiveMail;
+            lblError.Text = "";
+        }
+        else
+        {
+            txtCustomerEmail.Text = "";
+            txtCustomerName.Text = "";
+            txtCustomerPassword.Text = "";
+            txtCustomerDob.Text = "";
+            txtCustomerAddress.Text = "";
+            chkReceiveMail.Checked = false;
+            lblError.Text = "There were no customer details!";
         }
     }
 
